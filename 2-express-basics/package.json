@@ -1,0 +1,23 @@
+{
+  "name": "express-basics",
+  "version": "1.0.0",
+  "description": "Session 2: Express Basics & REST APIs",
+  "main": "examples/basic-express.js",
+  "scripts": {
+    "start": "node examples/basic-express.js",
+    "api": "node examples/rest-api-demo.js",
+    "middleware": "node examples/middleware-demo.js",
+    "profile": "node mini-task/profile-api.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": [
+    "express",
+    "rest",
+    "api",
+    "middleware"
+  ],
+  "author": "GDG School",
+  "license": "MIT"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "backend-fundamentals-nodejs",
+  "version": "1.0.0",
+  "description": "Session 1: Backend Fundamentals & Node.js",
+  "main": "examples/basic-server.js",
+  "scripts": {
+    "start": "node examples/basic-server.js",
+    "demo": "node examples/modules-demo.js",
+    "task": "node mini-task/server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "backend",
+    "http",
+    "server"
+  ],
+  "author": "GDG School",
+  "license": "MIT"
+}
