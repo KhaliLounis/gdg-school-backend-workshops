@@ -21,9 +21,12 @@ app.use((req, res, next) => {
 // 2) Add Custom Data Middleware
 // ------------------------------
 app.use((req, res, next) => {
-  req.requestId = Math.random().toString(36).substring(2, 8);
+  const requestId = Math.random().toString(36).substring(2, 8);
+  console.log("request id", requestId)
+  req.requestId = requestId;
   next();
 });
+
 
 // ------------------------------
 // ROUTES
