@@ -1,0 +1,35 @@
+{
+  "name": "mongodb-mongoose-workshop",
+  "version": "1.0.0",
+  "description": "Session 3: MongoDB & Mongoose Workshop",
+  "main": "examples/connection-demo.js",
+  "scripts": {
+    "start": "node examples/connection-demo.js",
+    "schema": "node examples/schema-model-demo.js",
+    "crud": "node examples/crud-demo.js",
+    "order": "node examples/execution-order-demo.js",
+    "middleware": "node examples/middleware-demo.js",
+    "dev": "nodemon examples/crud-demo.js",
+    "task": "node mini-task/task-api.js",
+    "task:dev": "nodemon mini-task/task-api.js",
+    "solution": "node solutions/task-api-solution.js",
+    "solution:dev": "nodemon solutions/task-api-solution.js"
+  },
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "nodejs",
+    "express",
+    "workshop"
+  ],
+  "author": "GDG Backend Workshop",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

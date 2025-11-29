@@ -1,0 +1,36 @@
+{
+  "name": "crud-api-workshop",
+  "version": "1.0.0",
+  "description": "Session 4: Full CRUD API with Clean Structure",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "examples:update": "node examples/update-delete-demo.js",
+    "examples:validation": "node examples/validation-demo.js",
+    "examples:structure": "node examples/structured-api/server.js",
+    "examples:structure:dev": "nodemon examples/structured-api/server.js",
+    "task": "node mini-task/server.js",
+    "task:dev": "nodemon mini-task/server.js",
+    "solution": "node solutions/server.js",
+    "solution:dev": "nodemon solutions/server.js"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "mongoose",
+    "crud",
+    "api",
+    "workshop"
+  ],
+  "author": "GDG Backend Workshop",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
