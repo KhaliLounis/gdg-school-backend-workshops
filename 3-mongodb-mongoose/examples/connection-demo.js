@@ -17,8 +17,12 @@ require("dotenv").config();
 
 console.log("🔄 Attempting to connect to MongoDB...\n");
 
+// Add timeout so it doesn't hang forever
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds
+    connectTimeoutMS: 10000, // Connection timeout
+  })
   .then(() => {
     console.log("✅ Connected to MongoDB successfully!");
     console.log("📦 Database is ready for operations\n");
