@@ -51,7 +51,7 @@ Create `GET /api/products` that:
   "_id": "...",
   "title": "My product",
   "description": "Details",
-  "done": false,
+  "rating": 1,
   "createdAt": "2024-01-15T10:30:00.000Z"
 }
 
@@ -61,7 +61,7 @@ Create `GET /api/products` that:
     "_id": "...",
     "title": "My product",
     "description": "Details",
-    "done": false,
+    "rating": 1,
     "createdAt": "2024-01-15T10:30:00.000Z"
   }
 ]
@@ -93,4 +93,4 @@ URL: http://localhost:3000/api/products
 
 - Add a `GET /api/products/:id` endpoint to get a single product
 - Add validation error handling
-- Add a `GET /api/products/pending` endpoint to get only incomplete products
+- Add a `GET /api/products` endpoint to get only best rated products
