@@ -1,72 +1,113 @@
-// ==============================
-// SIMPLE EXPRESS MIDDLEWARE DEMO
-// ==============================
+/**
+ * Schema & Model Demo
+ * This example shows how to define Schemas and create Models with Mongoose
+ *
+ * Run: npm run schema
+ */
 
-const express = require("express");
-const app = express();
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-// Built-in middleware → parses JSON body
-app.use(express.json());
+// ===========================================
+// SCHEMA DEFINITION
+// ===========================================
 
-// ------------------------------
-// 1) Simple Logger Middleware
-// ------------------------------
-// Runs for EVERY request
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next(); // continue
+// A Schema defines the structure of documents in a collection
+// It specifies fields, data types, and requirements
+
+const taskSchema = new mongoose.Schema({
+  // Required field - must be provided
+  title: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 100,
+  },
+
+  // Optional field with no validation
+  description: String,
+
+  // Boolean with default value
+  done: {
+    type: Boolean,
+    default: false,
+  },
+
+  // Number with min/max validation
+  priority: {
+    type: Number,
+    min: 1,
+    max: 5,
+    default: 3,
+  },
+
+  // Array of strings
+  tags: [String],
+
+  // Auto-generated timestamp
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-// ------------------------------
-// 2) Add Custom Data Middleware
-// ------------------------------
-app.use((req, res, next) => {
-  req.requestId = Math.random().toString(36).substring(2, 8);
-  next();
-});
+// ===========================================
+// MODEL CREATION
+// ===========================================
 
-// ------------------------------
-// ROUTES
-// ------------------------------
+// A Model is the object we use to interact with the collection
+// Model.create(), Model.find(), Model.findById(), etc.
 
-// Home route
-app.get("/", (req, res) => {
-  res.json({
-    message: "Welcome!",
-    requestId: req.requestId,
-  });
-});
+const Task = mongoose.model("Task", taskSchema);
 
-// Route with JSON body
-app.post("/echo", (req, res) => {
-  res.json({
-    received: req.body,
-    requestId: req.requestId,
-  });
-});
+// ===========================================
+// DEMONSTRATION
+// ===========================================
 
-// ------------------------------
-// 404 Not Found Middleware
-// ------------------------------
-app.use((req, res) => {
-  res.status(404).json({
-    error: "Route not found",
-  });
-});
+async function main() {
+  try {
+    // Connect to MongoDB
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("✅ Connected to MongoDB\n");
 
-// ------------------------------
-// ERROR HANDLER (last)
-// ------------------------------
-app.use((err, req, res, next) => {
-  res.status(500).json({
-    error: "Server error",
-    message: err.message,
-  });
-});
+    // Show schema structure
+    console.log("📋 Task Schema Fields:");
+    console.log("------------------------");
+    console.log("• title (String, required)");
+    console.log("• description (String, optional)");
+    console.log("• done (Boolean, default: false)");
+    console.log("• priority (Number, 1-5, default: 3)");
+    console.log("• tags (Array of Strings)");
+    console.log("• createdAt (Date, auto-generated)\n");
 
-// ------------------------------
-// Start Server
-// ------------------------------
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
-});
+    // Create a sample task to show the schema in action
+    console.log("📝 Creating a sample task...\n");
+
+    const sampleTask = new Task({
+      title: "Learn Mongoose Schemas",
+      description: "Understand how schemas work",
+      priority: 5,
+      tags: ["mongoose", "learning"],
+    });
+
+    // Show the document before saving (notice _id is auto-generated)
+    console.log("Document Preview (before saving):");
+    console.log(JSON.stringify(sampleTask.toObject(), null, 2));
+
+    // Note: We're not saving to database in this demo
+    // To save: await sampleTask.save();
+
+    console.log("\n💡 Key Points:");
+    console.log("   • Schema = Structure definition");
+    console.log("   • Model = Tool to interact with collection");
+    console.log("   • Mongoose auto-generates _id field");
+    console.log("   • Default values are applied automatically");
+  } catch (error) {
+    console.error("❌ Error:", error.message);
+  } finally {
+    await mongoose.connection.close();
+    console.log("\n👋 Connection closed");
+  }
+}
+
+main();
