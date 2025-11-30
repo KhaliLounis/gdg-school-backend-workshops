@@ -1,20 +1,14 @@
-/**
- * TODO 3: Task Routes
- *
- * Define routes that call controller functions:
- * - GET /        → getAllTasks
- * - GET /:id     → getTask
- * - POST /       → createTask
- * - PUT /:id     → updateTask
- * - DELETE /:id  → deleteTask
- */
+// Mini Task: Task Routes
 
 const express = require("express");
 const router = express.Router();
 const taskController = require("../controllers/taskController");
 
-// TODO: Define your routes here
+// TODO: Define routes
 // router.get("/", taskController.getAllTasks);
-// ...
+// router.get("/:id", taskController.getTask);
+// router.post("/", taskController.createTask);
+// router.put("/:id", taskController.updateTask);
+// router.delete("/:id", taskController.deleteTask);
 
 module.exports = router;

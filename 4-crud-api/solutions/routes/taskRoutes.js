@@ -1,13 +1,9 @@
-/**
- * Task Routes - Solution
- * Thin routes that call controller functions
- */
+// Task Routes - Solution
 
 const express = require("express");
 const router = express.Router();
 const taskController = require("../controllers/taskController");
 
-// Main CRUD routes
 router.get("/", taskController.getAllTasks);
 router.get("/:id", taskController.getTask);
 router.post("/", taskController.createTask);

@@ -23,7 +23,7 @@ async function main() {
 
     // Create a sample task (not saved to DB)
     const sampleTask = new Task({
-      title: "learn express",
+      title: "learn test",
       description: "Understand how schemas work",
       priority: 5,
       tags: ["express", "learning"],

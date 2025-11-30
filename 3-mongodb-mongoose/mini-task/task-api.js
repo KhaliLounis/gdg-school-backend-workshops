@@ -1,11 +1,4 @@
-/**
- * Mini Task: Task API with MongoDB
- *
- * Complete the TODOs to build a working Task API!
- *
- * Run: npm run task
- * Dev: npm run task:dev (with nodemon)
- */
+// Mini Task: Task API with MongoDB - Run: npm run task
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -14,79 +7,45 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
-// ===========================================
 // TODO 1: Connect to MongoDB
-// ===========================================
-// Use mongoose.connect() with process.env.MONGO_URI
-// Add .then() and .catch() for success/error handling
+// mongoose.connect(process.env.MONGO_URI)
+//   .then(() => console.log("Connected"))
+//   .catch((err) => console.error(err.message));
 
-// Your code here...
-
-// ===========================================
 // TODO 2: Create a Task Schema
-// ===========================================
-// Define a schema with:
-// - title (String, required)
-// - description (String, optional)
-// - done (Boolean, default: false)
-// - createdAt (Date, default: Date.now)
-
 // const taskSchema = new mongoose.Schema({
-//   // Your fields here...
+//   title: { type: String, required: true },
+//   description: String,
+//   done: { type: Boolean, default: false },
+//   createdAt: { type: Date, default: Date.now },
 // });
 
-// ===========================================
 // TODO 3: Create the Model
-// ===========================================
-// Create a Task model from your schema
-
 // const Task = mongoose.model("Task", taskSchema);
 
-// ===========================================
-// Home Route (already done for you!)
-// ===========================================
-
 app.get("/", (req, res) => {
-  res.json({
-    message: "Task API 🚀",
-    endpoints: {
-      createTask: "POST /api/tasks",
-      getAllTasks: "GET /api/tasks",
-    },
-  });
+  res.json({ message: "Task API" });
 });
 
-// ===========================================
 // TODO 4: Create POST /api/tasks
-// ===========================================
-// - Use async/await
-// - Create a new task using Task.create()
-// - Send back the created task with status 201
-// - Handle errors with try/catch
-
 // app.post("/api/tasks", async (req, res) => {
-//   // Your code here...
+//   try {
+//     const task = await Task.create(req.body);
+//     res.status(201).json(task);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
 // });
 
-// ===========================================
 // TODO 5: Create GET /api/tasks
-// ===========================================
-// - Use async/await
-// - Find all tasks using Task.find()
-// - Send back the array of tasks
-// - Handle errors with try/catch
-
 // app.get("/api/tasks", async (req, res) => {
-//   // Your code here...
+//   try {
+//     const tasks = await Task.find();
+//     res.json(tasks);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
 // });
-
-// ===========================================
-// Start the server
-// ===========================================
 
 const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log("\n📝 Complete the TODOs to make this API work!");
-});
+app.listen(PORT, () => console.log(`Server on http://localhost:${PORT}`));
