@@ -6,8 +6,6 @@ const jwt = require("jsonwebtoken");
 
 // Demo JWT creation, verification, and decoding
 
-console.log("JWT (JSON Web Token) Demo\n");
-console.log("=".repeat(50));
 
 // Secret key (in real app, use environment variable)
 const JWT_SECRET = "my-super-secret-key-change-this-in-production";
@@ -54,8 +52,8 @@ try {
 
 // Create expired token
 console.log("\n6. Creating expired token (1 second expiration):");
-const expiredToken = jwt.sign(userData, JWT_SECRET, { expiresIn: "1s" });
-console.log(`   Token created: ${expiredToken.substring(0, 50)}...`);
+const expiredToken = jwt.sign(userData, JWT_SECRET, { expiresIn: "4s" });
+console.log(`   Token created: ${expiredToken}...`);
 
 // Wait and try to verify
 setTimeout(() => {

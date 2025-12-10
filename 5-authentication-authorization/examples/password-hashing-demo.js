@@ -34,7 +34,7 @@ async function demonstratePasswordHashing() {
 
   // Show that same password produces different hashes
   console.log("\n5. Hashing same password again (different salt)...");
-  const hashedPassword2 = await bcrypt.hash(password, saltRounds);
+  const hashedPassword2 = await bcrypt.hash(password,saltRounds);
   console.log(`   Hash 1: ${hashedPassword}`);
   console.log(`   Hash 2: ${hashedPassword2}`);
   console.log(
