@@ -12,8 +12,9 @@ app.use(express.json());
 
 // Configuration
 const PORT = process.env.PORT || 3000;
+// Support both MONGO_URI and MONGODB_URI for flexibility
 const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/mini-task-auth";
+  process.env.MONGO_URI || process.env.MONGODB_URI || "mongodb://localhost:27017/mini-task-auth";
 
 // ===========================================
 // TODO: Import your routes here
